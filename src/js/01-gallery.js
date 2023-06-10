@@ -1,12 +1,11 @@
-import { galleryItems } from "./gallery-items.js";
+import { galleryItems } from './gallery-items.js';
 // Change code below this line
 console.log(galleryItems);
 
-const listGallery = document.querySelector(".gallery");
+const listGallery = document.querySelector('.gallery');
 
-const createCardPicture = galleryItems.map(
-  ({ preview, original, description }) => {
-    return ` 
+const createCardPicture = galleryItems.map(({ preview, original, description }) => {
+  return ` 
 <li class="gallery__item">
    <a class="gallery__link" href="${original}">
     <img
@@ -17,7 +16,6 @@ const createCardPicture = galleryItems.map(
     />
   </a>
 </li>`;
-  }
-);
+});
 
-listGallery.insertAdjacentHTML("beforeend", createCardPicture.join(""));
+listGallery.insertAdjacentHTML('beforeend', createCardPicture.join(''));
