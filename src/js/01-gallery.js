@@ -11,7 +11,7 @@ const createCardPicture = galleryItems.map(({ preview, original, description }) 
     <img
       class="gallery__image"
       src="${preview}"
-      data-source="large-image.jpg"
+      data-source="${original}"
       alt="${description}"
     />
   </a>
@@ -19,3 +19,19 @@ const createCardPicture = galleryItems.map(({ preview, original, description }) 
 });
 
 listGallery.insertAdjacentHTML('beforeend', createCardPicture.join(''));
+
+listGallery.addEventListener('click', showPicture);
+
+function showPicture(evt) {
+  evt.preventDefault();
+
+  if (evt.target.nodeName !== img) {
+    return;
+  }
+  console.log('🚀evt.target', evt.target);
+}
+
+const instance = basicLightbox.create(document.querySelector('template')`
+	    <img src="${evt.dataSet.source}" width="600" height="400"/>
+	`);
+instance.show();
