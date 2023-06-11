@@ -34,5 +34,5 @@ function showPicture(evt) {
 
 var lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
-  captionsDelay: '250ms',
+  captionsDelay: 250,
 });
