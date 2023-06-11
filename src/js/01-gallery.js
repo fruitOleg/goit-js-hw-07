@@ -4,6 +4,8 @@ console.log(galleryItems);
 
 const listGallery = document.querySelector('.gallery');
 
+listGallery.addEventListener('click', showPicture);
+
 const createCardPicture = galleryItems.map(({ preview, original, description }) => {
   return ` 
 <li class="gallery__item">
@@ -20,18 +22,17 @@ const createCardPicture = galleryItems.map(({ preview, original, description }) 
 
 listGallery.insertAdjacentHTML('beforeend', createCardPicture.join(''));
 
-listGallery.addEventListener('click', showPicture);
-
 function showPicture(evt) {
   evt.preventDefault();
 
-  if (evt.target.nodeName !== img) {
+  const isGalleyImg = evt.target.classList.contains('gallery__image');
+
+  if (!isGalleyImg) {
     return;
   }
-  console.log('🚀evt.target', evt.target);
-}
 
-const instance = basicLightbox.create(document.querySelector('template')`
-	    <img src="${evt.dataSet.source}" width="600" height="400"/>
+  const instance = basicLightbox.create(`
+	    <img src="${evt.target.dataSet.source}" width="600" height="400"/>
 	`);
-instance.show();
+  instance.show();
+}
