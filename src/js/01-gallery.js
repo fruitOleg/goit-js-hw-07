@@ -32,7 +32,7 @@ function showPicture(evt) {
   }
 
   const instance = basicLightbox.create(`
-	    <img src="${evt.target.dataSet.source}" width="600" height="400"/>
+	    <img src="${evt.target.dataset.source}" width="800" height="600"/>
 	`);
   instance.show();
 }
